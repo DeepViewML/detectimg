@@ -1,0 +1,142 @@
+devices:
+    common: []
+    debug: []
+    release: []
+dockercomposefile:
+    common: ''
+    debug: ''
+    release: ''
+extraparms:
+    common: {}
+    debug: {}
+    release: {}
+id: 7be98ced-f527-411c-8032-ff1022273bfb
+images:
+    debug: ''
+    release: ''
+imagetags:
+    debug: detect_app_arm64v8-debian-no-ssh_bullseye_debug_7be98ced-f527-411c-8032-ff1022273bfb
+    release: detect_app_arm64v8-debian-no-ssh_bullseye_release_7be98ced-f527-411c-8032-ff1022273bfb
+modificationdate: '2022-12-19T20:14:33.940013'
+networks:
+    common: []
+    debug: []
+    release: []
+otapackagename: ''
+otapackageversion: 1.0.0
+platformid: arm64v8-debian-no-ssh_bullseye
+ports:
+    common: {}
+    debug: {}
+    release: {}
+privatekey: '-----BEGIN RSA PRIVATE KEY-----
+
+    MIIEoQIBAAKCAQEAzufV6Zmd9SZ2C0CINLw9MIf+thiGqDZp+NbckbmNDEmdkU5r
+
+    qDusrAfmFjfe7Qs6l1LowGBgQFtfz+OJ0Wn/BmNq9CG94YycUv29JnY7wgzpbRTe
+
+    QjARCeY0fCtvf1Ipa/EenOGGDU2Ztw2vwTXFoxTWC+oo86N+vPqUC3NlIp4LrBrL
+
+    Q9U8548bYXcUP75NzyD+8MwUDszxLl8MQCeNtE/7x/+H/SMFsGmCgevOAn7Tvkgo
+
+    QMY/S3CJM2UE/KiJj1KyHg2hiZQlSezmEnOcDhbirlpuYC9smI7S2CZYxehoCIpS
+
+    eMm+uiCM7CpBjJWLiagNR/HA2S5HPG9CllzTwwIDAQABAoH/LAwu/gw2FHqbpsmW
+
+    NaPdYveQwjN2d1keNluHmX5nCLajVMvdH3OUzwrfcNt0GgLJ9m0wH8RkuU66lwdZ
+
+    z7tBD5saqd6FDf9hSEm8evOwxR76kr5ekrio5/KaOdUFZ5WWO+SZH8zjPPHIR7Ai
+
+    On+4E3/cEa1ICpZD5PdzjPyEC1o3/vCIkKYIhKTVq56fsLo/Zl1EeR3Bti4OBeN+
+
+    jjZY55s5ieCP761AFAaNxIjqwpFNkJoG67zNGAxrwFhnjRK943wNvSqs0WnXauNk
+
+    kWK4iZ6lEVCtMg+XExfA93smk96NEvKqp/NAaNoxWF46ZrvQEuiJXxPxILlg29tb
+
+    W9hRAoGBAPL5xyh7CA73FYs55fafwc4pIAKwWFOmXK+CuyKpwwBRSe6ncKY0t7/Z
+
+    WC8B+6uGTBX409c7c3Nzqt/1lFqhoOGBbnTGL5rUB+F8RGVv9kr8DP/8bm2D0Fe6
+
+    osaRUE5sbldNgUPIg2kNDGTsCOYXmb5y9JCqA9eDLWGbRW5X9cMRAoGBANn/Fm8X
+
+    zLe5n9UjFZr+oTGLpJpfh89O5sjwBB/eOrvPRzRffffL/lwg7XoMcHD0DN4Hqec6
+
+    GWLyUCkB2VPxclFVor/Q9eqY8trowzphxMSDhYGFfHiXJV9i7zPsfD2+X6BDQqSD
+
+    GiUDfV0XVK69+HJlg/7TaOq33aN6ewSNTsGTAoGAB6+A7jXeDmMgalP9gyyQe83v
+
+    NkaPtK2pdt/CvZjzExp/JS5ksM0wFsBwOqRsaoOH+pXxVXiK8VbyS70/4RIFvbxT
+
+    Wxw9uz8DtM0yeKbu+nY4jwxUDeDCgVPk/DTyfliNsPNBqHw6M+N2xeZ1bZnHgi+u
+
+    rrjCAFok4FaB/riHjJECgYBG7iUSiJ/nt9I1u3CwOeGhCVrJkAPUhEu7Xb050Ukz
+
+    CsKUW+3Uzt84gs5CRAHh/sahB8VUoybXdxh1/1ADbDBSHpcR6p/ZcWKzr8C2IlGv
+
+    z0uFVTWm1ycl3j8Omgfi3yqmLrxkYvQCzxvfSlQXd2B7eGR2abtdg+3t31BfrsrN
+
+    WQKBgQCc1JwmmsGV32JPv1sCfY3hHvXGK8EcEeoyETjsIiJw5SOlsMtME2kYMOmM
+
+    iLGnxn7g78DyiWLOmVfz26UOgc6IGpBdgilX9btdVPtuLJ91C84/Wrb5CU19FTNP
+
+    pCNPOtZGGQPxJa/9mltS9T5kNg7NCqE9q5bt9AjLZlRZfnMorQ==
+
+    -----END RSA PRIVATE KEY-----
+
+    '
+props:
+    common:
+        appargs: '/model.rtm /image.png '
+        appname: detect_app
+        arg: ''
+        buildcommands: ''
+        buildfiles: COPY test_image.png /image.png
+        command: ''
+        devpackages: libvaal:#%platform.debian-arch%# python
+        env: ''
+        exename: detect_app
+        expose: ''
+        extrapackages: libnng-dev libvaal-dev libvideostream-dev python3 deepview-rt-python
+            vaal-python libgomp1 libdeepview-rt libgstreamer1.0-dev  python3
+        language: c-cpp-nossh
+        preinstallcommands: RUN apt-get update && apt-get -q -y install curl gpg &&
+            curl https://deepviewml.com/apt/key.pub | gpg --dearmor -o /usr/share/keyrings/deepviewml.gpg
+            && echo 'deb [signed-by=/usr/share/keyrings/deepviewml.gpg] https://deepviewml.com/apt
+            stable main' > /etc/apt/sources.list.d/deepviewml.list
+        sdkpackages: ''
+        sdkpostinstallcommands: ''
+        sdkpreinstallcommands: 'RUN apt-get update && apt-get -q -y install curl gpg
+            && curl https://deepviewml.com/apt/key.pub | gpg --dearmor -o /usr/share/keyrings/deepviewml.gpg
+            && echo ''deb [signed-by=/usr/share/keyrings/deepviewml.gpg] https://deepviewml.com/apt
+            stable main'' > /etc/apt/sources.list.d/deepviewml.list '
+        targetcommands: ''
+        targetfiles: ADD mpk-coco-people-320x320-relu-tensor-uint8-int8-e65.rtm /model.rtm
+    debug:
+        arg: 'ARG SSHUSERNAME=#%application.username%#
+
+            '
+    release: {}
+publickey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO59XpmZ31JnYLQIg0vD0wh/62GIaoNmn41tyRuY0MSZ2RTmuoO6ysB+YWN97tCzqXUujAYGBAW1/P44nRaf8GY2r0Ib3hjJxS/b0mdjvCDOltFN5CMBEJ5jR8K29/Uilr8R6c4YYNTZm3Da/BNcWjFNYL6ijzo368+pQLc2UingusGstD1TznjxthdxQ/vk3PIP7wzBQOzPEuXwxAJ420T/vH/4f9IwWwaYKB684CftO+SChAxj9LcIkzZQT8qImPUrIeDaGJlCVJ7OYSc5wOFuKuWm5gL2yYjtLYJljF6GgIilJ4yb66IIzsKkGMlYuJqA1H8cDZLkc8b0KWXNPD
+sdkimages:
+    debug: sha256:71b9401d901cde14cd220cb55899996565f947776ac86b147142694ca24157f0
+    release: ''
+sdkimagetags:
+    debug: detect_app_arm64v8-debian-no-ssh_bullseye_debug_7be98ced-f527-411c-8032-ff1022273bfb_sdk_image
+    release: detect_app_arm64v8-debian-no-ssh_bullseye_release_7be98ced-f527-411c-8032-ff1022273bfb_sdk_image
+sdksshaddress:
+    debug: null
+    release: null
+shutdownscript:
+    common: ''
+    debug: ''
+    release: ''
+startupscript:
+    common: ''
+    debug: ''
+    release: ''
+username: root
+volumes:
+    common: {}
+    debug:
+        /home/torizon/detect_app: /detect_app,rw
+    release: {}
