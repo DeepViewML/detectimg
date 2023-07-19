@@ -55,9 +55,9 @@ main(int argc, char* argv[])
 {
     // These can be modified as needed
     int         err;
-    int         max_detection    = 25;
-    float       score_thr        = 0.5f;
-    float       iou_thr          = 0.5f;
+    int         max_detection    = 25; // Max number of boxes to be found
+    float       score_thr        = 0.5f; // The score threshold that a box must exceed to be reported
+    float       iou_thr          = 0.5f; // The IoU threshold to consider if boxes overlap
     const char* engine           = "npu";
     const char* model            = NULL;
     int         norm             = 0;

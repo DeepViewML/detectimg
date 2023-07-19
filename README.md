@@ -10,3 +10,8 @@ This code example demonstrates how to run general detection using VAAL. The C co
 ### Modifications
 To change what model or images are used with the general detection app, on the left toolbar in VSCode, select the Torizon Extension. Go to the Configurations section and from here you can change what model or images are used. These new models and images must be provided in the appconfig_0 folder to be accessible through the Torizon extension.
 
+## Maivin Using Docker on Target
+
+## EVK ArmV8
+
+## Desktop x86-64
