@@ -1,19 +1,19 @@
-OBJS := detect_app.o
+OBJS := detectimg.o
 LIBS := -lvaal
 
 %.o : %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
 
-detect_app: $(OBJS)
+detectimg: $(OBJS)
 	dpkg -L libvaal
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 
-install: detect_app
+install: detectimg
 	mkdir -p $(WORKDIR)
-	cp detect_app $(WORKDIR)/
+	cp detectimg $(WORKDIR)/
 
 
 clean:
 	rm -f *.o
-	rm -f detect_app
+	rm -f detectimg

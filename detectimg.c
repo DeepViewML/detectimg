@@ -73,7 +73,7 @@ main(int argc, char* argv[])
         {"engine", required_argument, NULL, 'e'},
     };
 
-    // Process command line arguments
+    // Processing of command line arguments
     for (;;) {
         int opt =
             getopt_long(argc, argv, "hv:m:t:u:n:e:", options, NULL);
@@ -137,7 +137,6 @@ main(int argc, char* argv[])
     VAALBox*     boxes     = calloc(max_detection, sizeof(VAALBox));
     VAALContext* ctx       = vaal_context_create(engine);
 
-    // Load model from file
     err = vaal_load_model_file(ctx, model);
     if (err) {
         fprintf(stderr, "failed to load model: %s\n", vaal_strerror(err));
