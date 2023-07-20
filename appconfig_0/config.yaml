@@ -110,7 +110,7 @@ props:
             && echo ''deb [signed-by=/usr/share/keyrings/deepviewml.gpg] https://deepviewml.com/apt
             stable main'' > /etc/apt/sources.list.d/deepviewml.list '
         targetcommands: ''
-        targetfiles: ADD mpk-coco-people-320x320-relu-tensor-uint8-int8-e65.rtm /model.rtm
+        targetfiles: ADD mpk-coco-people.rtm /model.rtm
     debug:
         arg: 'ARG SSHUSERNAME=#%application.username%#
 

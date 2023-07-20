@@ -99,6 +99,21 @@ To change what model or images are used with the general detection app, on the l
 
 ## Maivin Using Docker on Target
 
-## EVK ArmV8
+## NXP i.MX 8M Plus EVK
 
-## Desktop x86-64
+## Desktop Linux
+
+### Setup
+1. Please follow these [instructions](https://support.deepviewml.com/hc/en-us/articles/8328205801101) to install the necessary instructions to build the application.
+2. Ensure make is install ```sudo apt-get update && sudo apt-get install make``
+3. In the base folder of this repo, run ```make```
+
+At this point the detectimg application can be run using the provided samples or using your own model and image.
+```
+./detectimg -e cpu appconfig_0/mpk-coco-people.rtm appconfig_0/test_image.png
+VisionPack 1.4.0 EVALUATION - Copyright 2022 Au-Zone Technologies
+  [box] label            (scr%): xmin ymin xmax ymax  [    load    infer    boxes]
+appconfig_0/test_image.png                            [   43.19  1056.70     1.96]
+  [  0] person           ( 88%): 0.80 0.44 0.96 0.74
+  [  1] person           ( 52%): 0.32 0.46 0.40 0.52
+```
