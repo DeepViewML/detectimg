@@ -104,11 +104,11 @@ To change what model or images are used with the general detection app, on the l
 ## Desktop Linux
 
 ### Setup
-1. Please follow these [instructions](https://support.deepviewml.com/hc/en-us/articles/8328205801101) to install the necessary instructions to build the application.
+1. Please follow these [instructions](https://support.deepviewml.com/hc/en-us/articles/8328205801101) to install the necessary packages to build the application.
 2. Ensure make is install ```sudo apt-get update && sudo apt-get install make``
 3. In the base folder of this repo, run ```make```
 
-At this point the detectimg application can be run using the provided samples or using your own model and image.
+At this point the detectimg application will be built and can be run using the provided samples or using your own model and image.
 ```
 ./detectimg -e cpu appconfig_0/mpk-coco-people.rtm appconfig_0/test_image.png
 VisionPack 1.4.0 EVALUATION - Copyright 2022 Au-Zone Technologies
