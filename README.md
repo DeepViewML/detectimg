@@ -72,7 +72,11 @@ for (size_t j = 0; j < num_boxes; j++) {
     const VAALBox* box   = &boxes[j];
     const char*    label = vaal_label(ctx, box->label);
 ```
-At this point you are free to utilize the data as you need for whatever application you are developing.
+If you are using a model that does not use any of these post-procesing functions, you can access the outputs of the model using [vaal_output_tensor](). This can be used as follows
+```
+NNTensor* output = vaal_output_tensor(ctx, index);
+```
+At this point you are free to utilize the data as you need for whatever application you are developing, whether that be data from the post-processing functions provided in the VAAL Library or the direct outputs from the model.
 
 ### Deallocation Stage
 This stage is relatively straightforward and does not have complicated use as it is responsible for the deallocation of memory to avoid any memory leaks within your application. As was seen in the Initialization Stage, there are two elements of a VAAL Workflow where memory is allocated with the Context as well as the data structures used to store post-processed information. These can be deallocated as seen through the following code snippet.
