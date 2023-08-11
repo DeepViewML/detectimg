@@ -1,6 +1,9 @@
 # Image Based General Detection
 This code example demonstrates how to run general detection using VAAL. The C code in detectimg.c contains the sample application that runs general detection and demonstrates how it can be modified to fit your needs. This repo contains information on how to run this application on Maivin using Torizon, directly using Docker on Maivin, on an EVK as well as on one's desktop.
 
+# Sample Data
+For this code example, we do provide a sample RTM and image to be used. The RTM file can be found [here](https://github.com/DeepViewML/peopledetect/releases/tag/1.0) and the sample image can be found [here](). Once you have downloaded these files, place them into the appconfig_0 folder of this repository.
+
 ## VAAL Workflow
 When creating a VAAL Application, there are 3 stages involved, Initialization, Inference Loop, and Deallocation. The Inference Loop stage is composed of three main components, preprocessing, inference, and post-processing. We will examine each and provide a general overview and how to make modifications within those to tailor the application to one's parameters.
 
@@ -28,7 +31,7 @@ vaal_parameter_setf(ctx, "iou_threshold", &iou_thr, 1);
 vaal_parameter_seti(ctx, "normalization", &norm, 1);
 ```
 
-The code above sets values for normalization of images in pre-processing as well as parameters that will be used for NMS post-processing of the detection boxes. These parameters are stored as a dictionary within the context, so any name can be stored, but only some are recognized. To see the full list of recognized parameters, follow this [link]().
+The code above sets values for normalization of images in pre-processing as well as parameters that will be used for NMS post-processing of the detection boxes. These parameters are stored as a dictionary within the context, so any name can be stored, but only some are recognized. To see the full list of recognized parameters, follow this [link](https://docs.deepviewml.com/vaal/1.4.2/params.html).
 
 Additionally, for initialization, depending on the type of model that is being used, a structure will need to be initialized to store the resultant post-processed information. These can be initialized as follows
 
@@ -38,7 +41,7 @@ VAALKeypoint* keypoints = calloc(max_detection, sizeof(VAALKeypoint));
 VAALEuler* orientations = calloc(max_detection, sizeof(VAALEuler));
 ```
 
-These are the current three structures that are supported by VAAL and have their associated post-processing functions built-in to the VAAL Library. The VAALBox structure is used during object detection, it stores the box coordinates as well as the associated score and label. The VAALKeypoint structure is used during keypoint detection, finding specific keypoints on an object, for example, joints on a human body. A keypoint will store the x,y location, the score and label of a keypoint. The VAALEuler structure is used for pose estimation, with our most prominent use case, being head orientation. An Euler structure will contain the yaw, pitch, and roll information. Please see further [documentation]() for working with the data structures and creating code to suit your own needs to analayze the results stored within these data structures.
+These are the current three structures that are supported by VAAL and have their associated post-processing functions built-in to the VAAL Library. The VAALBox structure is used during object detection, it stores the box coordinates as well as the associated score and label. The VAALKeypoint structure is used during keypoint detection, finding specific keypoints on an object, for example, joints on a human body. A keypoint will store the x,y location, the score and label of a keypoint. The VAALEuler structure is used for pose estimation, with our most prominent use case, being head orientation. An Euler structure will contain the yaw, pitch, and roll information. Please see further [documentation](https://docs.deepviewml.com/vaal/1.4.2/index.html) for working with the data structures and creating code to suit your own needs to analayze the results stored within these data structures.
 
 ### Inference Loop Stage
 The inference loop is the primary component of any VAAL Application and will be where any data analysis will want to be added after each inference is performed. This stage is responsible for the loading of the inputs/pre-processing, the inference of the model on that input, as well as any post-processing and analysis that is to be performed on the resultant data.
@@ -48,7 +51,7 @@ To prepare the input tensor for inference, we provide a simple function call to 
 ```
 err = vaal_load_image_file(ctx, NULL, image, NULL, 0);
 ```
-Following this structure, this loads the image file, into the provided context. Looking at the [documentation]() we are able to provide an ROI for the image, should this become necessary in a multi-stage pipeline where the full image is not necessary as well as provide normalization information directly in the function call. From previously, we have seen that we are able to set the normalization parameter within the context. This will be used if the proc parameter is left as 0. As a warning, if a parameter is provided for normalization and the normalization parameter is set within the context, the library will perform a bitwise or of the two and it may lead to unexpected results, so it is recommended to use one or the other. To work with loading direct data, please see the documentation on [vaal_load_frame_memory]().
+Following this structure, this loads the image file, into the provided context. Looking at the [documentation](https://docs.deepviewml.com/vaal/1.4.2/capi.html) we are able to provide an ROI for the image, should this become necessary in a multi-stage pipeline where the full image is not necessary as well as provide normalization information directly in the function call. From previously, we have seen that we are able to set the normalization parameter within the context. This will be used if the proc parameter is left as 0. As a warning, if a parameter is provided for normalization and the normalization parameter is set within the context, the library will perform a bitwise or of the two and it may lead to unexpected results, so it is recommended to use one or the other. To work with loading direct data, please see the documentation on [vaal_load_frame_memory](https://docs.deepviewml.com/vaal/1.4.2/capi.html).
 
 #### Inference
 While this stage does the majority of the heavy lifting, the coding of this step is extremely straightforward with a single function call, with only the context containing the model as an argument.
@@ -72,7 +75,7 @@ for (size_t j = 0; j < num_boxes; j++) {
     const VAALBox* box   = &boxes[j];
     const char*    label = vaal_label(ctx, box->label);
 ```
-If you are using a model that does not use any of these post-procesing functions, you can access the outputs of the model using [vaal_output_tensor](). This can be used as follows
+If you are using a model that does not use any of these post-procesing functions, you can access the outputs of the model using [vaal_output_tensor](https://docs.deepviewml.com/vaal/1.4.2/capi.html). This can be used as follows
 ```
 NNTensor* output = vaal_output_tensor(ctx, index);
 ```
