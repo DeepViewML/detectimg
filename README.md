@@ -95,7 +95,10 @@ The data structures can be deallocated as usual with free, but to ensure the pro
 
 ### Setup
 1. Please see https://support.deepviewml.com/hc/en-us/articles/10977327933965-Visual-Studio-Torizon-Plugin for installing the extension and attaching your Maivin.
-2. Once this has been setup, within VSCode navigate to Run -> Start Debugging and the project will be run on the Maivin.
+2. Once you have opened the project with Visual Studio Code, it will be necessary to rebuild the project to incorporate your RSA key and the information it needs regarding your Docker setup.
+3. You will see an error regarding the devcontainer, to fix this open the Command Palette (Ctrl-Shift-P) and run 'Torizon: Rebuild SDK and reload in container'
+4. The devcontainer will now open and try to run the application. At this point, you can attach the devices as seen in the article in Step 1. 
+5. Once this has been setup, within VSCode navigate to Run -> Start Debugging and the project will be run on the Maivin.
 
 ### Modifications
 To change what model or images are used with the general detection app, on the left toolbar in VSCode, select the Torizon Extension. Go to the Configurations section and from here you can change what model or images are used. These new models and images must be provided in the appconfig_0 folder to be accessible through the Torizon extension.
