@@ -132,16 +132,30 @@ main(int argc, char* argv[])
 
     model = argv[optind++];
 
+    VAALContext *ctx = NULL;
+
+    if (strcmp(model, "PeopleDetection") == 0) {
+        ctx = vaal_model_probe(engine, model_type_people_detection);
+        if (!ctx) {
+            return EXIT_FAILURE;
+        }
+    } else if (strcmp(model, "FaceDetection") == 0) {
+        ctx = vaal_model_probe(engine, model_type_face_detection);
+        if (!ctx) {
+            return EXIT_FAILURE;
+        }
+    } else {
+        ctx = vaal_context_create(engine);
+        err = vaal_load_model_file(ctx, model);
+        if (err) {
+            fprintf(stderr, "failed to load model: %s\n", vaal_strerror(err));
+            return EXIT_FAILURE;
+        }
+    }
+
     // Initialize boxes object and context with requested engine
     size_t       num_boxes = 0;
     VAALBox*     boxes     = calloc(max_detection, sizeof(VAALBox));
-    VAALContext* ctx       = vaal_context_create(engine);
-
-    err = vaal_load_model_file(ctx, model);
-    if (err) {
-        fprintf(stderr, "failed to load model: %s\n", vaal_strerror(err));
-        return EXIT_FAILURE;
-    }
 
     // Set NMS parameters for context, values can be changed at start of main
     vaal_parameter_seti(ctx, "max_detection", &max_detection, 1);

@@ -115,6 +115,7 @@ To change what model or images are used with the general detection app, on the l
 3. In the base folder of this repo, run ```make```
 
 At this point the detectimg application will be built and can be run using the provided samples or using your own model and image.
+If you provide PeopleDetection or FaceDetection as the model, VAAL will probe the VAAL_MODEL_FOLDER for a model of the requested type.
 ```
 ./detectimg -e cpu appconfig_0/mpk-coco-people.rtm appconfig_0/test_image.png
 VisionPack 1.4.0 EVALUATION - Copyright 2022 Au-Zone Technologies
