@@ -36,9 +36,9 @@
     -e, --engine\n\
         Compute engine type \"cpu\", \"npu\"\n\
     -t, --threshold \n\
-        Threshold for valid scores, by default it is set to 0.5\n\
+        Threshold for valid scores, by default it is set to %.2f\n\
     -u, --iou \n\
-        IOU threshold for NMS, by default it is set to 0.5\n\
+        IOU threshold for NMS, by default it is set to %.2f\n\
     -n, --norm\n\
         Normalization method applied to input images. \n\
             - raw (default, no processing) \n\
@@ -81,7 +81,7 @@ main(int argc, char* argv[])
 
         switch (opt) {
         case 'h':
-            printf(USAGE);
+            printf(USAGE, score_thr, iou_thr);
             return EXIT_SUCCESS;
         case 'v':
             printf("DeepView VisionPack Detection Sample with VAAL %s\n",
@@ -134,20 +134,12 @@ main(int argc, char* argv[])
 
     VAALContext *ctx = NULL;
 
-    if (strcmp(model, "PeopleDetection") == 0) {
-        ctx = vaal_model_probe(engine, model_type_people_detection);
+    ctx = vaal_context_create(engine);
+    err = vaal_load_model_file(ctx, model);
+    if (err) {
+        vaal_context_release(ctx);
+        ctx = vaal_model_probe(engine, model);
         if (!ctx) {
-            return EXIT_FAILURE;
-        }
-    } else if (strcmp(model, "FaceDetection") == 0) {
-        ctx = vaal_model_probe(engine, model_type_face_detection);
-        if (!ctx) {
-            return EXIT_FAILURE;
-        }
-    } else {
-        ctx = vaal_context_create(engine);
-        err = vaal_load_model_file(ctx, model);
-        if (err) {
             fprintf(stderr, "failed to load model: %s\n", vaal_strerror(err));
             return EXIT_FAILURE;
         }
